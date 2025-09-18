@@ -1,0 +1,110 @@
+.registration {
+    width: 1920px;
+    display: flex;
+}
+
+.registration_img {
+    width: 948px;
+    height: 1000px;
+}
+
+.registration_formBg {
+    padding-top: 152px;
+    padding-left: 178px;
+    width: 100%;
+    height: auto;
+}
+
+.registration_formBg_title {
+    font-size: 42px;
+    font-weight: 600;
+}
+
+.registration_form {
+    margin-top: 48px;
+    width: 554px;
+    height: 518px;
+}
+
+.registration_form input {
+    padding: 10.5px 12px 10.5px 12px;
+    margin-top: 24px;
+    width: 100%;
+    height: 42px;
+    display: block;
+    border-radius: 8px;
+    border: 1px solid var(--darkBule-2);
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+
+
+.registration_form button {
+    margin-top: 46px;
+    width: 100%;
+    height: 41px;
+    background-color: var(--red);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.registration_form_avatar_cont {
+    margin-bottom: 48px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 15px;
+}
+
+.registration_form_avatar_cont_image {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+}
+
+.registration_form_avatar_cont_remove,
+.registration_form_avatar_cont_upload {
+    cursor: pointer;
+}
+
+.registration_form_avatar_cont_upload input[type="file"] {
+  display: none; /* hides the file input */
+}
+
+.registration_form_password_cont {
+    position: relative;
+}
+
+.registration_form_password_cont_eyeIcon {
+    position: absolute;
+    top: 14px;
+    right: 12px;
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+}
+
+.registration_form_login {
+    margin-top: 24px;
+    width: 554px;
+    text-align: center;
+}
+
+.registration_form_login span {
+    margin-left: 8px;
+    color: var(--red);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+h3 {
+    margin-top: 4px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--red);
+}

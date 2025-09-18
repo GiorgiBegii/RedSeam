@@ -1,0 +1,62 @@
+<div class="cont">
+    <app-header></app-header>
+    <div class="registration">
+        <img class="registration_img" src="/images/auth_img.png" alt="">
+        <div class="registration_formBg">
+            <h1 class="registration_formBg_title">Registration</h1>
+            <form class="registration_form" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+
+                <div class="registration_form_avatar_cont">
+                    <img class="registration_form_avatar_cont_image" [src]="avatarPreview" alt="">
+                    <label class="registration_form_avatar_cont_upload">
+                        Upload new
+                        <input type="file" accept="image/*" (change)="onFileSelected($event)" />
+                    </label>
+                    
+                    <p class="registration_form_avatar_cont_remove" (click)="removeAvatar()">Remove</p>
+                </div>
+                
+
+                <input
+                    type="text"
+                    formControlName="username"
+                    placeholder="Username"
+                />
+                <h3>{{ validations?.errors.username }}</h3>
+
+                <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="Email"
+                />
+                <h3>{{ validations?.errors.email }}</h3>
+
+                <div class="registration_form_password_cont">
+                    <input
+                        [type]="showPassword ? 'text' : 'password'"
+                        formControlName="password"
+                        placeholder="Password"
+                    />
+                    <img class="registration_form_password_cont_eyeIcon" src="/icons/eye.png" (click)="togglePasswordVisibility()"/>
+                </div>
+                <h3>{{ validations?.errors.password }}</h3>
+
+                <div class="registration_form_password_cont">
+                    <input
+                        [type]="showConfirmPassword ? 'text' : 'password'"
+                        formControlName="password_confirmation"
+                        placeholder="Confirm Password"
+                    />
+                    <img class="registration_form_password_cont_eyeIcon" src="/icons/eye.png" (click)="toggleConfirmPasswordVisibility()"/>
+                </div>
+
+                <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+                <h3>{{ validations?.message }}</h3>
+                <p class="registration_form_login">Already member?<span>Log in</span></p>
+            </form>
+
+            
+
+        </div>
+    </div>
+</div>

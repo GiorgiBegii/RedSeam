@@ -7,6 +7,15 @@
     font-family: 'Poppins', sans-serif;
 }
 
+:root {
+    --darkBule-2: #3E424A;
+    --red: #FF4000;
+}
+
+body {
+    overflow-x: hidden;
+}
+
 .cont {
     display: flex;
     flex-direction: column;
