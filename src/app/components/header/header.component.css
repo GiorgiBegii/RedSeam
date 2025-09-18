@@ -1,0 +1,26 @@
+.header {
+    padding: 28px 100px 28px 100px;
+    width: 1920px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header_logo {
+    width: 180px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.header_login {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.header_login div {
+    font-size: 12px;
+    font-weight: 500;
+}

@@ -1,0 +1,16 @@
+<div class="cont">
+    <div class="header">
+        <img class="header_logo" src="/Logo.png" alt="Logo">
+        <ng-container *ngIf="authorized; else showCart">
+            <div class="header_login" *ngIf="authorized">
+                <img src="/icons/user.png" alt="user_icon">
+                <div>Log in</div>
+            </div>
+        </ng-container>
+        <ng-template #showCart>
+            <div class="authorized" >
+                <img src="/icons/cart.png" alt="cart_icon">
+            </div>
+        </ng-template>
+    </div>
+</div>
