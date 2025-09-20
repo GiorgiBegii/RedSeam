@@ -1,0 +1,31 @@
+<div class="cont">
+    <app-header></app-header>
+    <div class="login">
+        <img class="login_img" src="/images/auth_img.png" alt="">
+        <div class="login_formBg">
+            <h1 class="login_formBg_title">Log in</h1>
+            <form class="login_form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+                <input
+                    type="email"
+                    formControlName="email"
+                    placeholder="Email"
+                />
+
+                <div class="login_form_password_cont">
+                    <input
+                        [type]="showPassword ? 'text' : 'password'"
+                        formControlName="password"
+                        placeholder="Password"
+                    />
+                    <img class="login_form_password_cont_eyeIcon" src="/icons/eye.png" (click)="togglePasswordVisibility()"/>
+                </div>
+
+                <button type="submit" [disabled]="loginForm.invalid">Log in</button>
+                <h3>{{ validations?.message }}</h3>
+                <p class="login_form_login">Not a member?<span>Register</span></p>
+            </form>
+
+        </div>
+    </div>
+</div>

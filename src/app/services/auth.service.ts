@@ -1,42 +1,68 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { RegisterRequest } from '../models/auth.model';
+import { RegisterRequest } from '../models/auth.model'; // Import the interface defining the registration payload
 
-
+/**
+ * AuthService handles all authentication-related API calls
+ * such as register, login, and token storage/retrieval.
+ */
 @Injectable({
-  providedIn: 'root' // Makes the service available application-wide without needing to register it in providers[]
+  providedIn: 'root' // This service will be singleton and available throughout the app
 })
 export class AuthService {
-  // API endpoint for registering a new user
-  private registerUrl = 'https://api.redseam.redberryinternship.ge/api/register';
-  // Key under which the token will be stored in localStorage
-  private tokenKey = 'readseam_auth_token';
-
-  constructor(private http: HttpClient) {} // Inject Angular's HttpClient for HTTP requests
+  /**
+   * Base URL for your backend API.
+   * All auth-related endpoints will be built from this URL.
+   */
+  private apBaseiUrl = 'https://api.redseam.redberryinternship.ge/api';
 
   /**
-   * Registers a new user by sending a POST request to the backend API.
-   * param payload The registration data that matches RegisterRequest interface.
-   * returns Observable with the server response.
+   * Key name used for storing the auth token in the browser's localStorage.
+   */
+  private tokenKey = 'readseam_auth_token';
+
+  /**
+   * Inject Angular HttpClient for making HTTP requests.
+   */
+  constructor(private http: HttpClient) {}
+
+  /**
+   * Sends a registration request to the backend API.
+   * param payload - An object implementing RegisterRequest containing user registration info.
+   * returns Observable<any> - Emits the server's response once available.
    */
   register(payload: RegisterRequest): Observable<any> {
-    // Set headers for the request. By default, sending JSON.
+    // Prepare JSON headers for the request.
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<any>(this.registerUrl, payload, { headers });
+
+    // Make POST request to /register endpoint with payload.
+    return this.http.post<any>(`${this.apBaseiUrl}/register`, payload, { headers });
   }
 
   /**
-   * Saves the authentication token in the browser's localStorage.
-   * @param token The JWT or auth token received from the server.
+   * Logs in the user by sending email and password to the backend API.
+   * param payload - Object containing email and password.
+   * returns Observable<any> - Emits the server's response (including token, etc.).
+   */
+  login(payload: { email: string; password: string }): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    // Make POST request to /login endpoint with credentials.
+    return this.http.post<any>(`${this.apBaseiUrl}/login`, payload, { headers });
+  }
+
+  /**
+   * Stores the JWT/authentication token in the browser's localStorage.
+   * param token - The authentication token string.
    */
   saveToken(token: string): void {
     localStorage.setItem(this.tokenKey, token);
   }
 
   /**
-   * Retrieves the authentication token from localStorage.
-   * returns The token string or null if not present.
+   * Retrieves the authentication token from the browser's localStorage.
+   * returns string | null - The token string if present, otherwise null.
    */
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
@@ -44,7 +70,7 @@ export class AuthService {
 
   /**
    * Removes the authentication token from localStorage.
-   * This is typically called when logging out the user.
+   * This effectively logs the user out on the client side.
    */
   clearToken(): void {
     localStorage.removeItem(this.tokenKey);
