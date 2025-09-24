@@ -13,10 +13,11 @@
                 <div *ngIf="filterModal" class="products_header_categories_filterModal">
                     <h1>Select price</h1>
                     <div class="products_header_categories_filterModal_inputs">
-                        <input type="text" placeholder="From">
-                        <input type="text" placeholder="to">
+                        <input [(ngModel)]="filterPrice_from" type="number" placeholder="From">
+                        <input [(ngModel)]="filterPrice_to" type="number" placeholder="to">
                     </div>
-                    <button>Apply</button>
+                    <p class="products_header_categories_filterModal_validation">{{filterValidation}}</p>
+                    <button (click)="applyFilter()">Apply</button>
                 </div>
                 <div (click)="toggleSortModal()" class="products_header_categories_dflex">
                     <p class="products_header_categories_text">Sort by</p>
@@ -24,12 +25,32 @@
                 </div>
                 <div *ngIf="sortModal" class="products_header_categories_sortModal">
                     <h1>Sort by</h1>
-                    <p>New products first</p>
-                    <p>Price, low to high</p>
-                    <p>Price, high to low</p>
+                    <p (click)="sort('created_at')">New products first</p>
+                    <p (click)="sort('price')">Price, low to high</p>
+                    <p (click)="sort('-price')">Price, high to low</p>
                 </div>
             </div>
         </div>
-        <app-product-card></app-product-card>
+        <div class="products_grid">
+            <app-product-card *ngFor="let product of products?.data" [product]="product"></app-product-card>
+        </div>
+        <div class="products_pagination_cont">
+            <div class="products_pagination">
+                <div class="products_pagination_iconBg">
+                    <img src="/icons/arrowLeft.png" alt="arrowLeeft">
+                </div>
+                <button>1</button>
+                <button>2</button>
+                <button>...</button>
+                <button>9</button>
+                <button>10</button>
+                <div class="products_pagination_iconBg">
+                    <img src="/icons/arrowRight.png" alt="arrowRight">
+                </div>
+            </div>
+            <div>
+                <p class="products_header_categories_showing">Showing 1–10 of 100 results</p>
+            </div>
+        </div>
     </div>
 </div>

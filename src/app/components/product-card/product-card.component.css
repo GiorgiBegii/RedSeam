@@ -1,4 +1,21 @@
 .card {
     width: 412px;
     height: 612px;
+    cursor: pointer;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.card h1 {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.card h2 {
+    font-size: 16px;
+    font-weight: 500;
 }
