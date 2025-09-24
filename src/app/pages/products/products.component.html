@@ -6,15 +6,30 @@
             <div class="products_header_categories">
                 <p class="products_header_categories_showing">Showing 1–10 of 100 results</p>
                 <div class="products_header_categories_line"></div>
-                <div class="products_header_categories_dflex">
+                <div (click)="toggleFilterModal()" class="products_header_categories_dflex">
                     <img class="products_header_categories_filterImg" src="/icons/filter.png" alt="">
                     <p class="products_header_categories_text">Filter</p>
                 </div>
-                <div class="products_header_categories_dflex">
+                <div *ngIf="filterModal" class="products_header_categories_filterModal">
+                    <h1>Select price</h1>
+                    <div class="products_header_categories_filterModal_inputs">
+                        <input type="text" placeholder="From">
+                        <input type="text" placeholder="to">
+                    </div>
+                    <button>Apply</button>
+                </div>
+                <div (click)="toggleSortModal()" class="products_header_categories_dflex">
                     <p class="products_header_categories_text">Sort by</p>
                     <img class="products_header_categories_sortImg" src="/icons/arrowDown.png" alt="">
                 </div>
+                <div *ngIf="sortModal" class="products_header_categories_sortModal">
+                    <h1>Sort by</h1>
+                    <p>New products first</p>
+                    <p>Price, low to high</p>
+                    <p>Price, high to low</p>
+                </div>
             </div>
         </div>
+        <app-product-card></app-product-card>
     </div>
 </div>

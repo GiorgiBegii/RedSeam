@@ -17,6 +17,7 @@
 }
 
 .products_header_categories {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 32px;
@@ -50,4 +51,70 @@
 .products_header_categories_text {
     font-size: 16px;
     font-weight: 400;
+}
+
+.products_header_categories_filterModal {
+    position: absolute;
+    top: 30px;
+    left: -90px;
+    padding: 16px;
+    width: 392px;
+    height: 169px;
+    border: 1px solid var(--gray-2);
+    border-radius: 8px;
+}
+
+.products_header_categories_filterModal h1 {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+.products_header_categories_filterModal_inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.products_header_categories_filterModal input {
+    padding: 10.5px 12px 10.5px 12px;
+    width: 175px;
+    height: 42px;
+    font-size: 14px;
+    border: 1px solid var(--gray-2);
+    border-radius: 8px;
+}
+
+.products_header_categories_filterModal button {
+    margin-left: 236px;
+    margin-top: 10px;
+    width: 124px;
+    height: 41px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--red);
+    color: white;
+    cursor: pointer;
+}
+
+.products_header_categories_sortModal {
+    position: absolute;
+    top: 30px;
+    right: 0;
+    padding: 16px;
+    width: 223px;
+    height: 184px;
+    border: 1px solid var(--gray-2);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.products_header_categories_sortModal h1 {
+    font-size: 16px;
+}
+
+.products_header_categories_sortModal p {
+    font-size: 16px;
+    cursor: pointer;
 }
