@@ -23,7 +23,7 @@
 
                 <button type="submit" [disabled]="loginForm.invalid">Log in</button>
                 <h3>{{ validations?.message }}</h3>
-                <p class="login_form_login">Not a member?<span>Register</span></p>
+                <p class="login_form_login">Not a member?<span routerLink="/registration">Register</span></p>
             </form>
 
         </div>

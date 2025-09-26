@@ -7,7 +7,7 @@ import { firstValueFrom } from 'rxjs';
 })
 export class ProductsService {
 
-  private apBaseiUrl = 'https://api.redseam.redberryinternship.ge/api/products/?';
+  private apBaseiUrl = 'https://api.redseam.redberryinternship.ge/api/products/';
 
   constructor(private http: HttpClient) { }
 
@@ -15,7 +15,7 @@ export class ProductsService {
 
   async getProducts(queryParam: string): Promise<any> {
     try {
-      const response = await firstValueFrom(this.http.get<any>(`${this.apBaseiUrl}${queryParam}`));
+      const response = await firstValueFrom(this.http.get<any>(`${this.apBaseiUrl}?${queryParam}`));
       return response;
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -23,5 +23,14 @@ export class ProductsService {
     }
   }
 
+  async getProductById(id: string): Promise<any> {
+    try {
+      const response = await firstValueFrom(this.http.get<any>(`${this.apBaseiUrl}${id}`));
+      return response;
+    } catch (error) {
+      console.error('Error fetching products:', error);
+      throw error; 
+    }
+  }
 
 }

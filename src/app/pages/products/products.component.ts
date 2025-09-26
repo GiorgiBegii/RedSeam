@@ -4,6 +4,7 @@ import { ProductCardComponent } from '../../components/product-card/product-card
 import { CommonModule } from '@angular/common';
 import { ProductsService } from '../../services/products.service';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class ProductsComponent {
   param: string = ""
 
 
-  constructor (private getProducts: ProductsService) {
+  constructor (private getProducts: ProductsService, private router: Router) {
 
   }
 
@@ -37,6 +38,10 @@ export class ProductsComponent {
     } catch (error) {
       console.error('Failed to load products', error);
     }
+  }
+
+  goToProduct(productId: number) {
+    this.router.navigate(['/product', productId]);
   }
 
   async sort(sortBy: string) {

@@ -4,7 +4,7 @@
         <div class="products_header">
             <h1 class="products_header_title">Products</h1>
             <div class="products_header_categories">
-                <p class="products_header_categories_showing">Showing 1–10 of 100 results</p>
+                <p class="products_header_categories_showing">Showing {{products?.meta.from}}–{{products?.meta.to}} of {{products?.meta.total}} results</p>
                 <div class="products_header_categories_line"></div>
                 <div (click)="toggleFilterModal()" class="products_header_categories_dflex">
                     <img class="products_header_categories_filterImg" src="/icons/filter.png" alt="">
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="products_grid">
-            <app-product-card *ngFor="let product of products?.data" [product]="product"></app-product-card>
+            <app-product-card (click)="goToProduct(product.id)" *ngFor="let product of products?.data" [product]="product"></app-product-card>
         </div>
         <div class="products_pagination_cont">
             <div class="products_pagination">
@@ -49,7 +49,7 @@
                 </div>
             </div>
             <div>
-                <p class="products_header_categories_showing">Showing 1–10 of 100 results</p>
+                <p class="products_header_categories_showing">Showing {{products?.meta.from}}–{{products?.meta.to}} of {{products?.meta.total}} results</p>
             </div>
         </div>
     </div>

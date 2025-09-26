@@ -1,0 +1,42 @@
+<div class="cont">
+    <app-header></app-header>
+    <div class="product">
+        <div class="product_images">
+            <div class="product_images_list">
+                <img class="product_images_list_img" *ngFor="let item of product.images" [src]="item" alt="">
+            </div>
+            <img class="product_images_mainImg" [src]="product.cover_image" alt="">
+        </div>
+        <div class="product_description">
+            <h1 class="product_description_name">{{product.name}}</h1>
+            <h2 class="product_description_price">$ {{product.price}}</h2>
+            <p class="product_description_colors_title">{{product.color}}</p>
+            <div class="product_description_colors">
+                <div class="product_description_color" *ngFor="let color of product.available_colors" [ngStyle]="{ 'background-color': color }"></div>
+            </div>
+            <p class="product_description_sizes_title">Size: {{product.size}}</p>
+            <div class="product_description_sizes">
+                <div class="product_description_size" *ngFor="let size of product.available_sizes">{{size}}</div>
+            </div>
+            <p class="product_description_quantity_title">Quantity</p>
+            <select class="product_description_quantity">
+                <option *ngFor="let _ of [].constructor(product.quantity); let i = index" [value]="i + 1">
+                    {{ i + 1 }}
+                </option>
+            </select>
+            <button class="product_description_addToCart">
+                <img src="/icons/cartWhite.png" alt="">
+                Add to cart
+            </button>
+            <div class="product_description_line"></div>
+            <div class="product_description_brand">
+                <div class="product_description_brand_title">
+                    <h1 class="product_description_brand_title_details">Details</h1>
+                    <img class="product_description_brand_title_img" [src]="product.brand.image" alt="">
+                </div>
+                <p class="product_description_brand_name">Brand: {{product.brand.name}}</p>
+                <p>{{product.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>

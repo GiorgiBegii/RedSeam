@@ -1,0 +1,148 @@
+.product {
+    padding: 100px;
+    width: 1920px;
+    display: flex;
+    gap: 168px;
+}
+
+.product_images {
+    display: flex;
+    gap: 24px;
+}
+
+.product_images_list {
+    width: 121px;
+}
+
+.product_images_list_img {
+    margin-bottom: 9px;
+    width: 100%;
+    height: 161.33px;
+    cursor: pointer;
+}
+
+.product_images_mainImg {
+    width: 703px;
+    height: 937px;
+}
+
+.product_description {
+
+}
+
+.product_description_name {
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.product_description_price {
+    margin-top: 21px;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+.product_description_colors {
+    margin-top: 21px;
+    display: flex;
+    gap: 13px;
+}
+
+.product_description_colors_title {
+    margin-top: 56px;
+}
+
+.product_description_color {
+    height: 38px;
+    width: 38px;
+    border-radius: 100%;
+    cursor: pointer;
+}
+
+.product_description_sizes {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+}
+
+.product_description_sizes_title {
+    margin-top: 48px;
+}
+
+.product_description_size {
+    width: 70px;
+    height: 42px;
+    border: 1px solid var(--gray-2);
+    border-radius: 10px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.product_description_quantity {
+    margin-top: 15px;
+    padding-right: 15px;
+    width: 70px;
+    height: 42px;
+    border-radius: 10px;
+    border: 1px solid var(--gray-2);
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+}
+
+.product_description_quantity_title {
+    margin-top: 48px;
+}
+
+.product_description_addToCart {
+    margin-top: 56px;
+    width: 704px;
+    height: 59px;
+    background-color: var(--red);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+}
+
+.product_description_line {
+    margin-top: 56px;
+    width: 704px;
+    height: 1px;
+    background-color: var(--gray-2);
+}
+
+.product_description_brand {
+    margin-top: 56px;
+}
+
+.product_description_brand p {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.product_description_brand_title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product_description_brand_title_details {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.product_description_brand_title_img {
+    height: 61px;
+}
+
+.product_description_brand_name {
+    margin-top: 7px;
+    margin-bottom: 19px;
+}

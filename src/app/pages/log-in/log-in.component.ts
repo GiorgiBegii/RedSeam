@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { HeaderComponent } from '../../components/header/header.component';
+import { RouterModule } from '@angular/router';
 
 /**
  * LogInComponent manages the login form UI and interaction with AuthService.
@@ -9,7 +10,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 @Component({
   selector: 'app-log-in',
   // Import header component and reactive forms for template use
-  imports: [HeaderComponent, ReactiveFormsModule],
+  imports: [HeaderComponent, ReactiveFormsModule, RouterModule],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
 })

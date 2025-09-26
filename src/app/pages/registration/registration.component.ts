@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-registration', // Component selector for usage in templates
-  imports: [HeaderComponent, ReactiveFormsModule], // Import reusable components and modules
+  imports: [HeaderComponent, ReactiveFormsModule, RouterModule], // Import reusable components and modules
   templateUrl: './registration.component.html', // HTML template
   styleUrl: './registration.component.css' // CSS styles (note: should be styleUrls: [] if multiple)
 })
