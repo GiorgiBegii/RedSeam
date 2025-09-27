@@ -9,5 +9,6 @@ import { RouterModule } from '@angular/router';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  @Input() authorized: boolean = true
+  @Input() authorized: boolean = false
+  
 }

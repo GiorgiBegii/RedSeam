@@ -24,3 +24,22 @@
     font-size: 12px;
     font-weight: 500;
 }
+
+
+.authorized {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.authorized_cart {
+    cursor: pointer;
+}
+
+.authorized_user {
+    width: 64px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}

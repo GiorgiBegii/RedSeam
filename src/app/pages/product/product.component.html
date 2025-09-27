@@ -10,7 +10,7 @@
         <div class="product_description">
             <h1 class="product_description_name">{{product.name}}</h1>
             <h2 class="product_description_price">$ {{product.price}}</h2>
-            <p class="product_description_colors_title">{{product.color}}</p>
+            <p class="product_description_colors_title">Color: {{product.color}}</p>
             <div class="product_description_colors">
                 <div class="product_description_color" *ngFor="let color of product.available_colors" [ngStyle]="{ 'background-color': color }"></div>
             </div>
