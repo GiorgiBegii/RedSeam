@@ -9,12 +9,23 @@
         </ng-container>
         <ng-template #showCart>
             <div class="authorized" >
-                <img class="authorized_cart" src="/icons/cart.png" alt="cart_icon">
+                <img (click)="openCart()" class="authorized_cart" src="/icons/cart.png" alt="cart_icon">
                 <div class="authorized_user">
                     <img src="/images/avatarSapmle.png" alt="">
                     <img src="/icons/arrowDown.png" alt="">
                 </div>
             </div>
         </ng-template>
+    </div>
+</div>
+
+<div *ngIf="isCartOpen" class="cartBg">
+    <div (click)="closeCart()" class="cartleft"></div>
+    <div class="cart">
+        <div class="cart_title">
+            <h1>Shopping cart (2)</h1>
+            <img (click)="closeCart()" src="/icons/x.png" alt="X">
+        </div>
+        <app-cart nextStageRoute="/checkout" nextStage="Go to checkout"></app-cart>
     </div>
 </div>

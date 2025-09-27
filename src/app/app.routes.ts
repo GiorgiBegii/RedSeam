@@ -18,6 +18,11 @@ export const routes: Routes = [
     component: ProductComponent,
     canActivate: [AuthGuard]
   },
+  {
+    path: 'checkout',
+    component: ProductComponent, //change this
+    canActivate: [AuthGuard]
+  },
 
   { path: '**', redirectTo: '' }
 ];

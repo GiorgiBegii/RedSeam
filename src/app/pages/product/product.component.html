@@ -3,28 +3,28 @@
     <div class="product">
         <div class="product_images">
             <div class="product_images_list">
-                <img class="product_images_list_img" *ngFor="let item of product.images" [src]="item" alt="">
+                <img class="product_images_list_img" *ngFor="let img of product.images" (click)="mainImgChanger(img)" [src]="img" alt="">
             </div>
-            <img class="product_images_mainImg" [src]="product.cover_image" alt="">
+            <img class="product_images_mainImg" [src]="mainImage" alt="">
         </div>
         <div class="product_description">
             <h1 class="product_description_name">{{product.name}}</h1>
             <h2 class="product_description_price">$ {{product.price}}</h2>
-            <p class="product_description_colors_title">Color: {{product.color}}</p>
+            <p class="product_description_colors_title">Color: {{cartObject.color}}</p>
             <div class="product_description_colors">
-                <div class="product_description_color" *ngFor="let color of product.available_colors" [ngStyle]="{ 'background-color': color }"></div>
+                <div class="product_description_color" (click)="selectColor(color)" *ngFor="let color of product.available_colors" [ngStyle]="{ 'background-color': color }"></div>
             </div>
-            <p class="product_description_sizes_title">Size: {{product.size}}</p>
+            <p class="product_description_sizes_title">Size: {{cartObject.size}}</p>
             <div class="product_description_sizes">
-                <div class="product_description_size" *ngFor="let size of product.available_sizes">{{size}}</div>
+                <div class="product_description_size" (click)="selectSize(size)" *ngFor="let size of product.available_sizes">{{size}}</div>
             </div>
             <p class="product_description_quantity_title">Quantity</p>
-            <select class="product_description_quantity">
+            <select class="product_description_quantity" [value]="cartObject.quantity" (change)="selectQuantity($event)">
                 <option *ngFor="let _ of [].constructor(product.quantity); let i = index" [value]="i + 1">
                     {{ i + 1 }}
                 </option>
             </select>
-            <button class="product_description_addToCart">
+            <button class="product_description_addToCart" (click)="addToCart()">
                 <img src="/icons/cartWhite.png" alt="">
                 Add to cart
             </button>

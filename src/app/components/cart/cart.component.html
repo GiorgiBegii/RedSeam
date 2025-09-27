@@ -1,34 +1,36 @@
 <div class="cart">
-    <div class="cart_item">
-        <img class="cart_item_img" src="" alt="">
-        <div class="cart_item_text">
-            <div class="cart_item_text_title">
-                <h2></h2>
-                <h1></h1>
-            </div>
-            <p class="cart_item_text_description"></p>
-            <p class="cart_item_text_size"></p>
-            <div>
-                <div>
-                    <button>-</button>
-                    <input type="text" name="" id="">
-                    <button>+</button>
+    <div class="cart_items">
+        <div class="cart_item" *ngFor="let product of cartData; let i = index">
+            <img class="cart_item_img" [src]="product.cover_image" alt="">
+            <div class="cart_item_text">
+                <div class="cart_item_text_title">
+                    <h2>{{product.name}}</h2>
+                    <h1>$ {{product.price}}</h1>
                 </div>
-                <button class="cart_item_text_remove">Remove</button>
+                <p class="cart_item_text_description">{{product.color}}</p>
+                <p class="cart_item_text_size">{{product.size}}</p>
+                <div class="cart_item_text_qwtRemove">
+                    <div class="cart_item_text_qwtRemove_qwt">
+                        <button (click)="decrementQwt(i)">-</button>
+                        <input type="text" [value]="product.quantity">
+                        <button (click)="incrementQwt(i)">+</button>
+                    </div>
+                    <button class="cart_item_text_remove" (click)="removeProduct(product.id)">Remove</button>
+                </div>
             </div>
         </div>
     </div>
-    <div>
+    <div class="cart_subtotal">
         <h1>Items subtotal</h1>
-        <h1>$</h1>
+        <h1>$ {{subtotalPrice}}</h1>
     </div>
-    <div>
+    <div class="cart_delivery">
         <h1>Delivery</h1>
-        <h1>$5</h1>
+        <h1>$ {{delivery}}</h1>
     </div>
-    <div>
+    <div class="cart_total">
         <h1>Total</h1>
-        <h1>$</h1>
+        <h1>$ {{total}}</h1>
     </div>
-    <button></button>
+    <button [routerLink]="nextStageRoute" class="nextStage">{{nextStage}}</button>
 </div>

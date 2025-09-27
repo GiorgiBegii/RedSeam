@@ -43,3 +43,46 @@
     gap: 4px;
     cursor: pointer;
 }
+
+.cartBg {
+    position: absolute;
+    z-index: 1;
+    top: 0px;
+    right: 0px;
+    width: 1920px;
+    height: 1080px;
+}
+
+.cartleft {
+    width: 100%;
+    height: 1080px;
+    background-color: var(--darkblue);
+    opacity: 60%;
+}
+
+.cart {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1;
+    width: 540px;
+    height: 1080px;
+    background-color: white;
+}
+
+.cart_title {
+    margin: 41px 40px 22px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cart_title h1 {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.cart_title img {
+    cursor: pointer;
+}
+

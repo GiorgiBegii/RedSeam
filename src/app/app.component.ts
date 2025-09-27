@@ -4,10 +4,11 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ProductComponent } from './pages/product/product.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RegistrationComponent, LogInComponent, ProductsComponent, ProductComponent],
+  imports: [RouterOutlet, RegistrationComponent, LogInComponent, ProductsComponent, ProductComponent,CartComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

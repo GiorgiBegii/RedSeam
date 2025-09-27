@@ -21,7 +21,7 @@
                     <img class="login_form_password_cont_eyeIcon" src="/icons/eye.png" (click)="togglePasswordVisibility()"/>
                 </div>
 
-                <button type="submit" [disabled]="loginForm.invalid">Log in</button>
+                <button type="submit" [disabled]="loginForm.invalid" routerLink="/">Log in</button>
                 <h3>{{ validations?.message }}</h3>
                 <p class="login_form_login">Not a member?<span routerLink="/registration">Register</span></p>
             </form>

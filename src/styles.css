@@ -11,6 +11,7 @@
     --darkBule-2: #3E424A;
     --red: #FF4000;
     --gray-2: #E1DFE1;
+    --darkblue: #10151F;
 }
 
 body {
@@ -22,4 +23,8 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+body.no-scroll {
+  overflow-y: hidden;
 }

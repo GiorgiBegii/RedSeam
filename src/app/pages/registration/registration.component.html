@@ -50,7 +50,7 @@
                     <img class="registration_form_password_cont_eyeIcon" src="/icons/eye.png" (click)="toggleConfirmPasswordVisibility()"/>
                 </div>
 
-                <button type="submit" [disabled]="registrationForm.invalid">Register</button>
+                <button type="submit" [disabled]="registrationForm.invalid" routerLink="/">Register</button>
                 <h3>{{ validations?.message }}</h3>
                 <p class="registration_form_login">Already member?<span routerLink="/login">Log in</span></p>
             </form>
