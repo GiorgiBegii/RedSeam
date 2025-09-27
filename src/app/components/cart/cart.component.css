@@ -5,7 +5,6 @@
 }
 
 .cart_items {
-    height: 620px;
     overflow-y: auto;
 }
 

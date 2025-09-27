@@ -4,6 +4,7 @@ import { LogInComponent } from './pages/log-in/log-in.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { ProductComponent } from './pages/product/product.component';
 import { AuthGuard } from './auth.guard';
+import { OrderComponent } from './pages/order/order.component';
 
 export const routes: Routes = [
   { path: 'login', component: LogInComponent },
@@ -19,8 +20,8 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'checkout',
-    component: ProductComponent, //change this
+    path: 'order',
+    component: OrderComponent,
     canActivate: [AuthGuard]
   },
 

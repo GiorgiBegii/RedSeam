@@ -1,0 +1,22 @@
+<app-header></app-header>
+<div class="cont">
+    <div class="checkout_bg">
+        <h1 class="checkout_title">Checkout</h1>
+        <div class="d-flex">
+            <div class="checkoutInputs">
+                <h2 class="checkoutInputs_title">Order details</h2>
+                <input type="text" placeholder="Name">
+                <input type="text" placeholder="Surname">
+                <div class="checkout_email">
+                    <img src="/icons/email.png" alt="email">
+                    <input type="text" placeholder="Email">
+                </div>
+                <input type="text" placeholder="Address">
+                <input type="text" placeholder="Zip code">
+            </div>
+            <div class="checkout_cart">
+                <app-cart nextStage="Pay" height="420px"></app-cart>
+            </div>
+        </div>
+    </div>
+</div>

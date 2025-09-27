@@ -1,5 +1,5 @@
 <div class="cart">
-    <div class="cart_items">
+    <div class="cart_items" [ngStyle]="{ 'height': height }">
         <div class="cart_item" *ngFor="let product of cartData; let i = index">
             <img class="cart_item_img" [src]="product.cover_image" alt="">
             <div class="cart_item_text">

@@ -18,6 +18,7 @@ export class CartComponent implements OnInit {
 
   @Input() nextStage: string = ""
   @Input() nextStageRoute: string = ""
+  @Input() height: string = ""
 
   cartData: any[] = []; 
 
@@ -26,6 +27,7 @@ export class CartComponent implements OnInit {
   async ngOnInit() {
     await this.loadCart();
     this.recalculateTotals();
+    console.log(this.height)
   }
 
   async loadCart() {
