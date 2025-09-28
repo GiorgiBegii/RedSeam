@@ -34,7 +34,6 @@ export class HeaderComponent {
     try {
       const data: any = await firstValueFrom(this.cartService.getCart());
       this.cartData = data;
-      console.log('Cart data:', this.cartData);
     } catch (err) {
       console.error('Failed to load cart', err);
     }

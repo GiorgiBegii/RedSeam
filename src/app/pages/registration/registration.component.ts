@@ -62,7 +62,6 @@ export class RegistrationComponent {
   onSubmit() {
     this.authService.register(this.registrationForm.value).subscribe({
       next: (response) => {
-        console.log('Registration successful', response);
 
         if (response) {
           // Reset form and preview after successful registration

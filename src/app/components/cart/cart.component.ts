@@ -40,7 +40,6 @@ export class CartComponent implements OnInit {
     try {
       const data: any = await firstValueFrom(this.cartService.getCart());
       this.cartData = data;
-      console.log('Cart data:', this.cartData);
     } catch (err) {
       console.error('Failed to load cart', err);
     }
@@ -70,7 +69,6 @@ export class CartComponent implements OnInit {
   removeProduct(id: number) {
     this.cartService.removeProductFromCart(id).subscribe({
       next: async () => {
-        console.log('Product removed from cart');
         await this.loadCart();
         this.recalculateTotals();
       },
@@ -83,7 +81,6 @@ export class CartComponent implements OnInit {
     if(this.nextStage == 'Pay'){
       for(let i = 0; i < this.cartData.length; i++){
         this.removeProduct(this.cartData[i].id)
-        console.log(this.cartData[i].id)
       }
     }
   }

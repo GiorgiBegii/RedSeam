@@ -37,7 +37,6 @@ export class ProductComponent implements OnInit {
     
     try {
       this.product = await this.productsService.getProductById(this.productId);
-      console.log('Product:', this.product);
       this.mainImage = this.product.cover_image
       this.cartObject.color = this.product.available_colors[0];
       this.cartObject.size = this.product.available_sizes[0];
@@ -68,7 +67,6 @@ export class ProductComponent implements OnInit {
   addToCart() {
     this.cartService.addProductToCart(this.productId, this.cartObject).subscribe({
       next: (response) => {
-        console.log('Added to cart successfully:', response);
         // Optionally show some success UI feedback here
       },
       error: (error) => {

@@ -54,18 +54,22 @@
 }
 
 .product_description_color {
+    padding: 4px;
     height: 38px;
     width: 38px;
     border-radius: 100%;
     cursor: pointer;
-    border: 2px solid transparent;
-    transition: border-color 0.3s ease;
+    /* border: 1px solid var(--gray-2); */
+      box-shadow:
+        0 0 0 2px white,
+        0 0 0 4px var(--gray-2);
     z-index: 0;
 }
 
-/* Highlight selected color with border */
-.product_description_color.selected {
-    border-color: #000; /* black border for selection */
+.product_description_color_bg {
+    padding: 4px;
+    height: 44px;
+    width: 44px;
 }
 
 .product_description_sizes_title {
@@ -171,26 +175,6 @@
 .product_description_brand_name {
     margin-top: 7px;
     margin-bottom: 19px;
-}
-
-.product_description_color {
-  height: 38px;
-  width: 38px;
-  border-radius: 100%;
-  cursor: pointer;
-  border: 2px solid transparent;
-  opacity: 0.6;
-  transition: border-color 0.3s, opacity 0.3s;
-}
-
-.product_description_color.selected {
-  border-color: black;
-  opacity: 1;
-}
-
-/* Add a subtle shadow or scaling if you want */
-.product_description_color.selected:hover {
-  box-shadow: 0 0 5px rgba(0,0,0,0.3);
 }
 
 .product_description_size {
