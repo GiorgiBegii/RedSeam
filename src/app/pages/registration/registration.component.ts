@@ -3,6 +3,7 @@ import { HeaderComponent } from '../../components/header/header.component';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration', // Component selector for usage in templates
@@ -25,7 +26,7 @@ export class RegistrationComponent {
   // Registration form group
   registrationForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     // Initialize form controls
     this.registrationForm = this.fb.group({
       username: '',               // Username input
@@ -62,20 +63,21 @@ export class RegistrationComponent {
   onSubmit() {
     this.authService.register(this.registrationForm.value).subscribe({
       next: (response) => {
-
         if (response) {
-          // Reset form and preview after successful registration
+          // Save token
+          this.authService.saveToken(response.token);
+
+          // Navigate to home after saving token
+          this.router.navigate(['/']);
+
+          // Reset form and avatar
           this.registrationForm.reset();
           this.removeAvatar();
-
-          // Save token (if returned from API)
-          this.authService.saveToken(response.token)
         }
       },
       error: (err) => {
         console.error('Registration failed', err);
-        // Store error messages to display in template
-        this.validations = err.error
+        this.validations = err.error;
       }
     });
   }

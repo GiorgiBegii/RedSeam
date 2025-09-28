@@ -47,7 +47,6 @@ export class AuthService {
    */
   login(payload: { email: string; password: string }): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-
     // Make POST request to /login endpoint with credentials.
     return this.http.post<any>(`${this.apBaseiUrl}/login`, payload, { headers });
   }

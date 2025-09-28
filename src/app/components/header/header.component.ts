@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { CartComponent } from '../cart/cart.component';
 import { firstValueFrom } from 'rxjs';
 import { CartService } from '../../services/cart.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,17 +13,20 @@ import { CartService } from '../../services/cart.service';
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-  @Input() authorized: boolean = false
+  @Input() authorized: boolean = true
 
   isCartOpen = false;
   cartData: any;
   cartItems: number = 0
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService, private authService: AuthService) {}
 
   async ngOnInit() {
     await this.loadCart()
     this.cartItems = this.cartData.length
+    if(this.authService.getToken()){
+      this.authorized = false
+    }
   }
 
   updateCartItems(updatedCart: any[]) {

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { ReactiveFormsModule, FormGroup, FormControl, Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { HeaderComponent } from '../../components/header/header.component';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 /**
  * LogInComponent manages the login form UI and interaction with AuthService.
@@ -31,7 +32,7 @@ export class LogInComponent {
   /**
    * Constructor injects FormBuilder to build form and AuthService for API calls.
    */
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     // Initialize the form group with email and password controls
     this.loginForm = this.fb.group({
       email: '',                  // Email input control
@@ -44,6 +45,7 @@ export class LogInComponent {
    * Sends the form data to the AuthService login endpoint.
    */
   onSubmit() {
+    // console.log("Form value:", this.loginForm.value);
     // Pass the form's current values to the login API
     this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
@@ -55,10 +57,10 @@ export class LogInComponent {
         if (response?.token) {
           this.authService.saveToken(response.token);
         }
-
+        
         // Clear any previous validation errors after successful login
         this.validations = undefined;
-
+        this.router.navigate(['/']);
         // Optionally navigate somewhere (e.g., dashboard)
         // this.router.navigate(['/dashboard']);
       },
