@@ -26,6 +26,7 @@ export class HeaderComponent {
     this.cartItems = this.cartData.length
     if(this.authService.getToken()){
       this.authorized = false
+      console.log("isi")
     }
   }
 

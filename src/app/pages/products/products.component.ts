@@ -127,4 +127,9 @@ export class ProductsComponent {
     this.sortModal = !this.sortModal;
     if (this.filterModal) this.filterModal = false;
   }
+
+  clearFilter() {
+    this.filterPrice_from = undefined
+    this.filterPrice_to = undefined
+  }
 }

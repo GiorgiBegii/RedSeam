@@ -31,6 +31,12 @@
                 </div>
             </div>
         </div>
+        <div>
+           <h1 class="filter" (click)="clearFilter()" *ngIf="(filterPrice_from || filterPrice_to) && (filterPrice_from !== 0 || filterPrice_to !== 0)">
+                Price: {{filterPrice_from}} - {{filterPrice_to}}
+                <img src="/icons/x.png" alt="X">
+            </h1>
+        </div>
         <div class="products_grid">
             <app-product-card (click)="goToProduct(product.id)" *ngFor="let product of products?.data" [product]="product"></app-product-card>
         </div>
