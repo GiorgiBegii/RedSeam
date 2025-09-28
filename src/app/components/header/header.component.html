@@ -20,12 +20,29 @@
 </div>
 
 <div *ngIf="isCartOpen" class="cartBg">
-    <div (click)="closeCart()" class="cartleft"></div>
-    <div class="cart">
-        <div class="cart_title">
-            <h1>Shopping cart (2)</h1>
-            <img (click)="closeCart()" src="/icons/x.png" alt="X">
-        </div>
-        <app-cart nextStageRoute="/order" nextStage="Go to checkout" height="610px"></app-cart>
+  <div (click)="closeCart()" class="cartleft"></div>
+  <div class="cart">
+    <div class="cart_title">
+      <h1>Shopping cart ({{ cartItems }})</h1>
+      <img (click)="closeCart()" src="/icons/x.png" alt="X">
     </div>
+
+    <!-- Show app-cart if cartItems is not empty -->
+    <app-cart 
+      *ngIf="cartItems > 0"
+      (cartItems)="updateCartItems($event)" 
+      [cartData]="cartData" 
+      nextStageRoute="/checkout" 
+      nextStage="Go to checkout" 
+      height="610px">
+    </app-cart>
+
+    <!-- Show emptyCart div if cartItems is empty -->
+    <div *ngIf="cartItems == 0" class="emptyCart">
+      <img src="/images/cartImg.png" alt="cartImage">
+      <h1>Ooops!</h1>
+      <p>You’ve got nothing in your cart just yet...</p>
+      <button routerLink="/" (click)="closeCart()">Start shopping</button>
+    </div>
+  </div>
 </div>

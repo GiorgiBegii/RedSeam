@@ -86,3 +86,32 @@
     cursor: pointer;
 }
 
+.emptyCart {
+    margin-top: 151px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.emptyCart h1 {
+    margin-top: 24px;
+    font-size: 24px;
+}
+
+.emptyCart p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.emptyCart button {
+    margin-top: 58px;
+    width: 214px;
+    height: 41px;
+    background-color: var(--red);
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}

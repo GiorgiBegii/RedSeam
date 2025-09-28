@@ -60,3 +60,9 @@
     padding-left: 28px;
     width: 578px;
 }
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-bottom: 10px;
+}

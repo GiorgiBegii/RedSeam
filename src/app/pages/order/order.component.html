@@ -3,19 +3,84 @@
     <div class="checkout_bg">
         <h1 class="checkout_title">Checkout</h1>
         <div class="d-flex">
-            <div class="checkoutInputs">
-                <h2 class="checkoutInputs_title">Order details</h2>
-                <input type="text" placeholder="Name">
-                <input type="text" placeholder="Surname">
-                <div class="checkout_email">
-                    <img src="/icons/email.png" alt="email">
-                    <input type="text" placeholder="Email">
+            <form #orderForm="ngForm" novalidate>
+                <div class="checkoutInputs">
+                    <h2 class="checkoutInputs_title">Order details</h2>
+
+                    <!-- Name -->
+                    <input
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    [(ngModel)]="formData.name"
+                    required
+                    #nameInput="ngModel"
+                    />
+                    <div *ngIf="nameInput.invalid && (nameInput.dirty || nameInput.touched)" class="error">
+                    Name is required.
+                    </div>
+
+                    <!-- Surname -->
+                    <input
+                    type="text"
+                    name="surname"
+                    placeholder="Surname"
+                    [(ngModel)]="formData.surname"
+                    required
+                    #surnameInput="ngModel"
+                    />
+                    <div *ngIf="surnameInput.invalid && (surnameInput.dirty || surnameInput.touched)" class="error">
+                    Surname is required.
+                    </div>
+
+                    <!-- Email -->
+                    <div class="checkout_email">
+                    <img src="/icons/email.png" alt="email" />
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        [(ngModel)]="formData.email"
+                        required
+                        email
+                        #emailInput="ngModel"
+                    />
+                    </div>
+                    <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="error">
+                    Valid email is required.
+                    </div>
+
+                    <!-- Address -->
+                    <input
+                    type="text"
+                    name="address"
+                    placeholder="Address"
+                    [(ngModel)]="formData.address"
+                    required
+                    #addressInput="ngModel"
+                    />
+                    <div *ngIf="addressInput.invalid && (addressInput.dirty || addressInput.touched)" class="error">
+                    Address is required.
+                    </div>
+
+                    <!-- Zip Code -->
+                    <input
+                    type="text"
+                    name="zipcode"
+                    placeholder="Zip code"
+                    [(ngModel)]="formData.zipcode"
+                    required
+                    pattern="^[0-9]{5}$"
+                    #zipInput="ngModel"
+                    />
+                    <div *ngIf="zipInput.invalid && (zipInput.dirty || zipInput.touched)" class="error">
+                    Zip code must be 5 digits.
+                    </div>
                 </div>
-                <input type="text" placeholder="Address">
-                <input type="text" placeholder="Zip code">
-            </div>
+            </form>
+
             <div class="checkout_cart">
-                <app-cart nextStage="Pay" height="420px"></app-cart>
+                <app-cart [cartData]="cartData" nextStage="Pay" height="420px" nextStageRoute="/congrats"></app-cart>
             </div>
         </div>
     </div>

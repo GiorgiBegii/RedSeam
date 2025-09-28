@@ -2,6 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CartComponent } from '../cart/cart.component';
+import { firstValueFrom } from 'rxjs';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-header',
@@ -13,6 +15,30 @@ export class HeaderComponent {
   @Input() authorized: boolean = false
 
   isCartOpen = false;
+  cartData: any;
+  cartItems: number = 0
+
+  constructor(private cartService: CartService) {}
+
+  async ngOnInit() {
+    await this.loadCart()
+    this.cartItems = this.cartData.length
+  }
+
+  updateCartItems(updatedCart: any[]) {
+    this.cartData = updatedCart;
+    this.cartItems = updatedCart.length;
+  }
+
+  async loadCart() {
+    try {
+      const data: any = await firstValueFrom(this.cartService.getCart());
+      this.cartData = data;
+      console.log('Cart data:', this.cartData);
+    } catch (err) {
+      console.error('Failed to load cart', err);
+    }
+  }
 
   openCart() {
     this.isCartOpen = true;

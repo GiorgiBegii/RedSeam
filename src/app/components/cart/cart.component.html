@@ -32,5 +32,5 @@
         <h1>Total</h1>
         <h1>$ {{total}}</h1>
     </div>
-    <button [routerLink]="nextStageRoute" class="nextStage">{{nextStage}}</button>
+    <button (click)="pay()" [routerLink]="nextStageRoute" class="nextStage">{{nextStage}}</button>
 </div>

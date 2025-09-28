@@ -36,18 +36,31 @@
         </div>
         <div class="products_pagination_cont">
             <div class="products_pagination">
-                <div class="products_pagination_iconBg">
-                    <img src="/icons/arrowLeft.png" alt="arrowLeeft">
+                <div
+                    class="products_pagination_iconBg"
+                    (click)="goToPage(currentPage - 1)"
+                    [class.disabled]="currentPage === 1"
+                >
+                    <img  src="/icons/arrowLeft.png" alt="arrowLeft" />
                 </div>
-                <button>1</button>
-                <button>2</button>
-                <button>...</button>
-                <button>9</button>
-                <button>10</button>
-                <div class="products_pagination_iconBg">
-                    <img src="/icons/arrowRight.png" alt="arrowRight">
+
+                <button
+                    *ngFor="let page of pages"
+                    (click)="goToPage(page)"
+                    [class.active]="currentPage === page"
+                >
+                    {{ page }}
+                </button>
+
+                <div
+                    class="products_pagination_iconBg"
+                    (click)="goToPage(currentPage + 1)"
+                    [class.disabled]="currentPage === lastPage"
+                >
+                    <img src="/icons/arrowRight.png" alt="arrowRight" />
                 </div>
-            </div>
+                </div>
+
             <div>
                 <p class="products_header_categories_showing">Showing {{products?.meta.from}}–{{products?.meta.to}} of {{products?.meta.total}} results</p>
             </div>

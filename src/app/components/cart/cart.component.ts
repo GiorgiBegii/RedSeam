@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { firstValueFrom } from 'rxjs';
@@ -19,15 +19,21 @@ export class CartComponent implements OnInit {
   @Input() nextStage: string = ""
   @Input() nextStageRoute: string = ""
   @Input() height: string = ""
-
-  cartData: any[] = []; 
+  @Input() cartData: any[] = []; 
+  @Output() cartItems = new EventEmitter<any[]>();
 
   constructor(private cartService: CartService) {}
 
   async ngOnInit() {
-    await this.loadCart();
     this.recalculateTotals();
-    console.log(this.height)
+    this.cartItems.emit(this.cartData);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['cartData'] && this.cartData) {
+      this.recalculateTotals();
+      this.cartItems.emit(this.cartData);
+    }
   }
 
   async loadCart() {
@@ -46,6 +52,7 @@ export class CartComponent implements OnInit {
       this.subtotalPrice += this.cartData[i].price * this.cartData[i].quantity;
     }
     this.total = this.subtotalPrice + this.delivery;
+    this.cartItems.emit(this.cartData);
   }
 
   incrementQwt(index: number) {
@@ -69,5 +76,15 @@ export class CartComponent implements OnInit {
       },
       error: (err) => console.error('Error removing product', err)
     });
+  }
+
+  pay() {
+    
+    if(this.nextStage == 'Pay'){
+      for(let i = 0; i < this.cartData.length; i++){
+        this.removeProduct(this.cartData[i].id)
+        console.log(this.cartData[i].id)
+      }
+    }
   }
 }
